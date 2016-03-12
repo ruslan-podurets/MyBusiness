@@ -1,7 +1,9 @@
-package com.dev.mybusiness;
+package com.dev.mybusiness.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.dev.mybusiness.R;
 
 public class MainActivity extends AppCompatActivity {
 
