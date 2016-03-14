@@ -19,7 +19,7 @@ import android.widget.ImageView;
 /**
  * Created by Rusik on 12.03.2016.
  */
-public class CircleImageView  extends ImageView {
+public class CircleImageView extends ImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -71,7 +71,7 @@ public class CircleImageView  extends ImageView {
     }
 
     private void init() {
-        initBorderSettings();
+        // initBorderSettings();
         super.setScaleType(SCALE_TYPE);
         mReady = true;
 

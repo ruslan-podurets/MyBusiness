@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyBusiness</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="save_bill">Save Bill</string>
+    <string name="create_new_bill">Create New Bill</string>
+    <string name="bill_name_hint">Input bill name</string>
+    <string name="bill_description_hint">Input bill description</string>
+    <string name="bill_money_hint">Input bill</string>
+    <string name="db_error">Internal database error!</string>
+    <string name="fill_valid_data">Please fill valid data.</string>
 </resources>

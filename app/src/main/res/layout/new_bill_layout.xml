@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/bill_name_hint"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/editTextMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/bill_money_hint"
+        android:inputType="number"
+        android:maxLength="@integer/max_sum_length"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/bill_description_hint"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_bill" />
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.dev.mybusiness;
 
 import android.app.Application;
 
+import com.dev.mybusiness.db.HelperFactory;
 import com.dev.mybusiness.listeners.AppStateListener;
 
 /**
@@ -22,5 +23,7 @@ public class App extends Application {
         app = this;
         appStateListener = new AppStateListener();
         this.registerActivityLifecycleCallbacks(appStateListener);
+        HelperFactory.setHelper(this);
     }
+
 }
