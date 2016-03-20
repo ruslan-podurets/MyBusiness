@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:gravity="center"
+    card_view:cardBackgroundColor="@android:color/white">
+    <!-- card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="3dp" -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/text_list_top_bottom_margin"
+        android:paddingLeft="@dimen/text_list_side_margin"
+        android:paddingRight="@dimen/text_list_side_margin"
+        android:paddingTop="@dimen/text_list_top_bottom_margin">
+
+        <com.dev.mybusiness.view.MediumRobotoTextView
+            android:id="@+id/textViewHeader"
+            style="@style/ListHeader"
+            android:paddingRight="@dimen/text_list_side_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/textViewCash" />
+
+        <com.dev.mybusiness.view.RegularRobotoTextView
+            android:paddingRight="@dimen/text_list_side_margin"
+            android:id="@+id/textViewAdditionalInfo"
+            style="@style/ListDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewHeader"
+            android:layout_toLeftOf="@+id/textViewCash" />
+
+        <com.dev.mybusiness.view.LightRobotoTextView
+            android:id="@+id/textViewCash"
+            style="@style/ListDescriptionAdditional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
