@@ -15,5 +15,23 @@
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="titleTextColor">@android:color/white</item>
     </style>
+    
+     <style name="ListHeader">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ListDescription">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="ListDescriptionAdditional">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
 
 </resources>

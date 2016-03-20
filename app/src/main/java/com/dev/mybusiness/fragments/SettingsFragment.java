@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import com.dev.mybusiness.R;
 
 /**
- * Created by Rusik on 13.03.2016.
+ * Created by Rusik on 19.03.2016.
  */
-public class AccountsFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.accounts_layout, container, false);
+        return inflater.inflate(R.layout.settings_layout, container, false);
     }
 }

@@ -2,30 +2,44 @@ package com.dev.mybusiness.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.dev.mybusiness.R;
+import com.dev.mybusiness.fragments.AboutAppFragment;
+import com.dev.mybusiness.fragments.AccountsFragment;
 import com.dev.mybusiness.fragments.BillsFragment;
+import com.dev.mybusiness.fragments.GeneralInfoFragment;
+import com.dev.mybusiness.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FrameLayout frameLayoutContainer;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    int currentChosenMenuId = 0;
+    private boolean isChangeFragment;
+    private Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews(getWindow().getDecorView());
-        BillsFragment billsFragment = new BillsFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame, billsFragment).commit();
+        currentFragment = new GeneralInfoFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame, currentFragment).commit();
+        currentChosenMenuId = R.id.general;
+        navigationView.setCheckedItem(currentChosenMenuId);
+
     }
 
     private void initViews(View rootView) {
@@ -37,13 +51,48 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDefaultDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
-        DrawerLayout drawerLayout = (DrawerLayout) rootView.findViewById(R.id.drawerLayout);
+        drawerLayout = (DrawerLayout) rootView.findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolBar, 0, 0) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                if (isChangeFragment) {
+                    isChangeFragment = false;
+                    Fragment fragment;
+                    switch (currentChosenMenuId) {
+                        case R.id.general:
+                            fragment = new GeneralInfoFragment();
+                            break;
+                        case R.id.accounts:
+                            fragment = new AccountsFragment();
+                            break;
+                        case R.id.bills:
+                            fragment = new BillsFragment();
+                            break;
+                        case R.id.settings:
+                            fragment = new SettingsFragment();
+                            break;
+                        case R.id.about:
+                            fragment = new AboutAppFragment();
+                            break;
+                        default:
+                            fragment = null;
+                    }
 
+                    if (fragment == null) {
+                        Toast.makeText(getBaseContext(), "NULL id item.getItemId()", Toast.LENGTH_SHORT).show();
+                    } else {
+                        invalidateOptionsMenu();
+                        currentFragment = fragment;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, currentFragment).commit();
+                    }
+                }
+            }
         };
+
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        final NavigationView navigationView = (NavigationView) (rootView).findViewById(R.id.navigationView);
+        navigationView = (NavigationView) (rootView).findViewById(R.id.navigationView);
         navigationView.post(new Runnable() {
             @Override
             public void run() {
@@ -55,12 +104,31 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-
+                drawerLayout.closeDrawer(GravityCompat.START);
+                if (item.getItemId() != currentChosenMenuId) {
+                    currentChosenMenuId = item.getItemId();
+                    isChangeFragment = true;
                 }
                 return true;
             }
         });
-        frameLayoutContainer = (FrameLayout) rootView.findViewById(R.id.frame);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        switch (currentChosenMenuId) {
+            case R.id.bills:
+                getMenuInflater().inflate(R.menu.menu_add, menu);
+                break;
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (currentFragment instanceof BillsFragment) {
+            return ((BillsFragment) currentFragment).onMenuItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

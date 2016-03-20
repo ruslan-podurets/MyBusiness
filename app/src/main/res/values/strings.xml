@@ -8,4 +8,7 @@
     <string name="bill_money_hint">Input bill</string>
     <string name="db_error">Internal database error!</string>
     <string name="fill_valid_data">Please fill valid data.</string>
+    <string name="add_item">Add item</string>
+    <string name="outgoings">OutGoings:</string>
+    <string name="no_description">No Description</string>
 </resources>

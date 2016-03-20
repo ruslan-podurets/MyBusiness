@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/inbox"
+            android:id="@+id/general"
             android:checked="false"
             android:title="General Info" />
         <item
-            android:id="@+id/starred"
+            android:id="@+id/accounts"
             android:checked="false"
             android:title="Accounts" />
         <item
-            android:id="@+id/sent_mail"
+            android:id="@+id/bills"
             android:checked="false"
             android:title="Bills" />
         <item
-            android:id="@+id/drafts"
+            android:id="@+id/settings"
             android:checked="false"
             android:title="Settings" />
         <item
-            android:id="@+id/trash"
+            android:id="@+id/about"
             android:checked="false"
             android:title="About app" />
     </group>
